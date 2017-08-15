@@ -1,0 +1,33 @@
+#!/bin/bash
+
+# Recreate squid users
+squid ()	{
+	# Asking user to set a username via read and writing it into $usrn
+	read -e -p "Your desired username: " usrn
+	# Creating user with username from $usrn and asking user to set a password
+	htpasswd -c /etc/squid/passwd $usrn
+}
+
+# Recreate squid3 users
+squid3 ()	{
+	# Asking user to set a username via read and writing it into $usrn
+	read -e -p "Your desired username: " usrn
+	# Creating user with username from $usrn and asking user to set a password
+	htpasswd -c /etc/squid3/passwd $usrn
+}
+
+# Default function with information
+dinfo ()	{
+	echo "-squid   -- Recreate squid users"
+	echo "-squid3   -- Recreate squid3 users"
+}
+
+# Checking $1 and running corresponding function
+case $1 in
+	'-squid') # If option "-squid" run function squid
+		squid;; # Recreate squid users
+	'-squid3') # If option "-squid3" run function squid3
+		squid3;; # Recreate squid3 users
+	*) # If option empty or non existing run function info
+		dinfo;; # Default, information about available options and et cetera
+esac
