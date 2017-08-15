@@ -22,3 +22,6 @@ You can easily block access to domains by adding them to the "blacklist.acl" fil
 https://github.com/hidden-refuge/spi/wiki/Domain-blacklist
 <br /><br />
 For help with Squid and in order to change the configuration according to your needs please consult the <a href="http://wiki.squid-cache.org/SquidFaq">Squid FAQ</a> and the <a href="http://wiki.squid-cache.org/">Squid wiki</a>.
+<br /><br />
+<br /><br />
+Cloned from https://github.com/hidden-refuge/spi all i did was dumb down the squid config for fast deployment and destroy.
