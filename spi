@@ -142,7 +142,7 @@ deb8 ()	{
 	firew2
 }
 
-# Function for Ubuntu
+# Function for Ubuntu User Auth
 ubt ()	{
 	# Updating package database
 	apt-get update
@@ -158,6 +158,50 @@ ubt ()	{
 	cp /etc/init/squid3.conf /etc/init.d/squid3
 	# Creating empty blacklist.acl file for further blacklisting entries
 	touch /etc/squid3/blacklist.acl	
+	# Restarting Squid and enabling its service
+	service squid3 restart && update-rc.d squid3 defaults
+	# Running function firew2
+	firew2
+}
+
+# Function for Ubuntu Ip Auth
+ubt_ip ()	{
+	# Updating package database
+	apt-get update
+	# Installing necessary packages (Squid, apache2-utils for htpassword and dependencies)
+	apt-get install nano dos2unix apache2-utils squid3 -y
+	# Asking user to set a username via read and writing it into $usrn
+	# read -e -p "Your desired username: " usrn
+	# Creating user with username from $usrn and asking user to set a password
+	# htpasswd -c /etc/squid3/passwd $usrn
+	# Downloading Squid configuration
+	wget -O /etc/squid3/squid.conf https://raw.githubusercontent.com/DigitalADHD/Squid_Proxy/master/spi-ubuntu_ip_auth.conf --no-check-certificate
+	# Copying squid3.conf from init to init.d for startup script
+	cp /etc/init/squid3.conf /etc/init.d/squid3
+	# Creating empty blacklist.acl file for further blacklisting entries
+	touch /etc/squid3/blacklist.acl
+	# Restarting Squid and enabling its service
+	service squid3 restart && update-rc.d squid3 defaults
+	# Running function firew2
+	firew2
+}
+
+# Function for Ubuntu No Auth
+ubt_null ()	{
+	# Updating package database
+	apt-get update
+	# Installing necessary packages (Squid, apache2-utils for htpassword and dependencies)
+	apt-get install nano dos2unix apache2-utils squid3 -y
+	# Asking user to set a username via read and writing it into $usrn
+	# read -e -p "Your desired username: " usrn
+	# Creating user with username from $usrn and asking user to set a password
+	# htpasswd -c /etc/squid3/passwd $usrn
+	# Downloading Squid configuration
+	wget -O /etc/squid3/squid.conf https://raw.githubusercontent.com/DigitalADHD/Squid_Proxy/master/spi-ubuntu_no_auth.conf --no-check-certificate
+	# Copying squid3.conf from init to init.d for startup script
+	cp /etc/init/squid3.conf /etc/init.d/squid3
+	# Creating empty blacklist.acl file for further blacklisting entries
+	touch /etc/squid3/blacklist.acl
 	# Restarting Squid and enabling its service
 	service squid3 restart && update-rc.d squid3 defaults
 	# Running function firew2
@@ -229,7 +273,11 @@ case $1 in
 	'-jessie') # If option "-jessie" run function deb8
 		deb8;; # Debian "Jessie" 8
 	'-ubuntu') # If option "-ubuntu" run function ubt
-		ubt;; # Ubuntu
+		ubt;; # Ubuntu User
+	'-ubuntu_ip') # If option "-ubuntu_ip" run function ubt_ip
+		ubt_ip;; # Ubuntu Ip		
+	'-ubuntu_null') # If option "-ubuntu" run function ubt_null
+		ubt_null;; # Ubuntu	Null
 	'-fedora') # If option "fedora" run function fed
 		fed;; # Fedora 
 	*) # If option empty or non existing run function info
