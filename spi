@@ -6,8 +6,8 @@
 # Branch: Stable                                                           #
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 # Author: Hidden Refuge (© 2014 - 2017)                                    #
-# Modified for me: DigitalADHD, Thanks to hidden-refuge for leading the    #
-# way.									   #
+# Modified for me: Icharis, Thanks to hidden-refuge for leading the    #
+# way.	and thanks to ADHD-- copied from his repo           		   #
 # License: MIT License                                                     #
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 # GitHub Repo: https://github.com/hidden-refuge/spi/                       #
@@ -49,9 +49,9 @@ rhel5 ()	{
 	# Downloading necessary Squid.conf for the corresponding OS & system architecture
 	case $vsysarch in
 			32) # 32 bit Squid configuration
-					wget -O /etc/squid/squid.conf https://raw.githubusercontent.com/DigitalADHD/Squid_Proxy/master/spi-rhel5632.conf --no-check-certificate;;
+					wget -O /etc/squid/squid.conf https://github.com/icharisofcc/proxy/master/spi-rhel5632.conf --no-check-certificate;;
 			64) # 64 bit Squid configuration
-					wget -O /etc/squid/squid.conf https://raw.githubusercontent.com/DigitalADHD/Squid_Proxy/master/spi-rhel5664.conf --no-check-certificate;;
+					wget -O /etc/squid/squid.conf https://github.com/icharisofcc/proxy/master/spi-rhel5664.conf --no-check-certificate;;
 	esac
 	# Creating empty blacklist.acl file for further blacklisting entries
 	touch /etc/squid/blacklist.acl
@@ -74,9 +74,9 @@ rhel6 ()	{
 	# Downloading necessary Squid.conf for the corresponding OS & system architecture
 	case $vsysarch in
 			32) # 32 bit Squid configuration
-					wget -O /etc/squid/squid.conf https://raw.githubusercontent.com/DigitalADHD/Squid_Proxy/master/spi-rhel5632.conf --no-check-certificate;;
+					wget -O /etc/squid/squid.conf https://github.com/icharisofcc/proxy/master/spi-rhel5632.conf --no-check-certificate;;
 			64) # 64 bit Squid configuration
-					wget -O /etc/squid/squid.conf https://raw.githubusercontent.com/DigitalADHD/Squid_Proxy/master/spi-rhel5664.conf --no-check-certificate;;
+					wget -O /etc/squid/squid.conf https://github.com/icharisofcc/proxy/master/spi-rhel5664.conf --no-check-certificate;;
 	esac
 	# Creating empty blacklist.acl file for further blacklisting entries
 	touch /etc/squid/blacklist.acl
@@ -95,7 +95,7 @@ rhel7 ()	{
 	# Creating user with username from $usrn and asking user to set a password
 	htpasswd -c /etc/squid/passwd $usrn
 	# Downloading Squid configuration 
-	wget -O /etc/squid/squid.conf https://raw.githubusercontent.com/DigitalADHD/Squid_Proxy/master/spi-rhel7.conf --no-check-certificate
+	wget -O /etc/squid/squid.conf https://github.com/icharisofcc/proxy/spi-rhel7.conf --no-check-certificate
 	# Creating empty blacklist.acl file for further blacklisting entries
 	touch /etc/squid/blacklist.acl
 	# Restarting Squid and enabling its service
@@ -115,7 +115,7 @@ deb ()	{
 	# Creating user with username from $usrn and asking user to set a password
 	htpasswd -c /etc/squid3/passwd $usrn
 	# Downloading Squid configuration
-	wget -O /etc/squid3/squid.conf https://raw.githubusercontent.com/DigitalADHD/Squid_Proxy/master/spi-debian.conf --no-check-certificate
+	wget -O /etc/squid3/squid.conf https://github.com/icharisofcc/proxy/master/spi-debian.conf --no-check-certificate
 	# Creating empty blacklist.acl file for further blacklisting entries
 	touch /etc/squid3/blacklist.acl
 	# Restarting Squid and enabling its service
@@ -135,7 +135,7 @@ deb8 ()	{
 	# Creating user with username from $usrn and asking user to set a password
 	htpasswd -c /etc/squid3/passwd $usrn
 	# Downloading Squid configuration
-	wget -O /etc/squid3/squid.conf https://raw.githubusercontent.com/DigitalADHD/Squid_Proxy/master/spi-jessie.conf --no-check-certificate
+	wget -O /etc/squid3/squid.conf https://github.com/icharisofcc/proxy/master/spi-jessie.conf --no-check-certificate
 	# Creating empty blacklist.acl file for further blacklisting entries
 	touch /etc/squid3/blacklist.acl
 	# Restarting Squid and enabling its service
@@ -155,7 +155,7 @@ ubt ()	{
 	# Creating user with username from $usrn and asking user to set a password
 	htpasswd -c /etc/squid3/passwd $usrn
 	# Downloading Squid configuration
-	wget -O /etc/squid3/squid.conf https://raw.githubusercontent.com/DigitalADHD/Squid_Proxy/master/spi-ubuntu.conf --no-check-certificate
+	wget -O /etc/squid3/squid.conf https://github.com/icharisofcc/proxy/master/spi-ubuntu.conf --no-check-certificate
 	# Copying squid3.conf from init to init.d for startup script
 	cp /etc/init/squid3.conf /etc/init.d/squid3
 	# Creating empty blacklist.acl file for further blacklisting entries
@@ -177,7 +177,7 @@ ubt_ip ()	{
 	# Creating user with username from $usrn and asking user to set a password
 	# htpasswd -c /etc/squid3/passwd $usrn
 	# Downloading Squid configuration
-	wget -O /etc/squid3/squid.conf https://raw.githubusercontent.com/DigitalADHD/Squid_Proxy/master/spi-ubuntu_ip_auth.conf --no-check-certificate
+	wget -O /etc/squid3/squid.conf https://github.com/icharisofcc/proxy/master/spi-ubuntu_ip_auth.conf --no-check-certificate
 	# Copying squid3.conf from init to init.d for startup script
 	cp /etc/init/squid3.conf /etc/init.d/squid3
 	# Creating empty blacklist.acl file for further blacklisting entries
@@ -199,7 +199,7 @@ ubt_null ()	{
 	# Creating user with username from $usrn and asking user to set a password
 	# htpasswd -c /etc/squid3/passwd $usrn
 	# Downloading Squid configuration
-	wget -O /etc/squid3/squid.conf https://raw.githubusercontent.com/DigitalADHD/Squid_Proxy/master/spi-ubuntu_no_auth.conf --no-check-certificate
+	wget -O /etc/squid3/squid.conf https://github.com/icharisofcc/proxy/master/spi-ubuntu_no_auth.conf --no-check-certificate
 	# Copying squid3.conf from init to init.d for startup script
 	cp /etc/init/squid3.conf /etc/init.d/squid3
 	# Creating empty blacklist.acl file for further blacklisting entries
@@ -221,9 +221,9 @@ fed () {
 	# Downloading necessary Squid.conf for the corresponding OS & system architecture
 	case $vsysarch in
 		32) # 32 bit Squid configuration
-			wget -O /etc/squid/squid.conf https://raw.githubusercontent.com/DigitalADHD/Squid_Proxy/master/spi-fedora32.conf --no-check-certificate;;
+			wget -O /etc/squid/squid.conf https://github.com/icharisofcc/proxy/master/spi-fedora32.conf --no-check-certificate;;
 		64) # 64 bit Squid configuration
-			wget -O /etc/squid/squid.conf https://raw.githubusercontent.com/DigitalADHD/Squid_Proxy/master/spi-rhel7.conf --no-check-certificate;;
+			wget -O /etc/squid/squid.conf https://github.com/icharisofcc/proxy/master/spi-rhel7.conf --no-check-certificate;;
 	esac
 	# Creating empty blacklist.acl file for further blacklisting entries
 	touch /etc/squid/blacklist.acl
